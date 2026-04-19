@@ -17,7 +17,7 @@ const Carousel: React.FC<Props> = ({
   frameSize = 3,
   step = 3,
   animationDuration = 1000,
-  infinite = false,
+  infinite,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -52,8 +52,8 @@ const Carousel: React.FC<Props> = ({
     }
   };
 
-  const isPrevDisabled = currentIndex === 0;
-  const isNextDisabled = currentIndex === maxIndex;
+  const isPrevDisabled = !infinite && currentIndex === 0;
+  const isNextDisabled = !infinite && currentIndex === maxIndex;
 
   return (
     <div className="Carousel">
@@ -79,11 +79,12 @@ const Carousel: React.FC<Props> = ({
           {images.map((image, index) => (
             <li
               key={index}
-              style={{ width: `${safeItemWidth}px`, flex: '0 0 auto' }}
+              style={{ width: `${itemWidth}px`, flex: '0 0 auto' }}
             >
               <img
                 src={image}
                 alt={`img-${index}`}
+                width={safeItemWidth}
                 style={{ width: '100%', display: 'block' }}
               />
             </li>
