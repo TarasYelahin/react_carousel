@@ -74,7 +74,7 @@ class App extends React.Component<{}, State> {
             />
           </label>
           <label htmlFor="animationId">
-            animationDuration:
+            fnimationDuration:
             <input
               type="number"
               id="animationId"
